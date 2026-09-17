@@ -1,5 +1,6 @@
 package com.example.smartpantrymanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,9 +13,9 @@ import com.example.smartpantrymanager.adapter.PantryAdapter;
 import com.example.smartpantrymanager.database.DatabaseHelper;
 import com.example.smartpantrymanager.model.PantryItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
-import android.content.Intent;
 
 /**
  * Pantry List screen - shows every ingredient currently in the user's pantry.
@@ -39,8 +40,10 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Add button - will open the Add/Edit screen once we build it next.
-        // For now it just confirms the click works.
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavPantry);
+        bottomNav.setSelectedItemId(R.id.nav_pantry);
+        NavigationHelper.setup(this, bottomNav);
+
         fabAdd.setOnClickListener(v ->
                 startActivity(new Intent(this, AddEditIngredientActivity.class)));
     }

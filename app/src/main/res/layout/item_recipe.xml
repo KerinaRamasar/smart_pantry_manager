@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One row in the Suggested Recipes list -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:background="@drawable/bg_card"
+    android:layout_marginBottom="10dp"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textRecipeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/text_main"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Tomato Pasta" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✓ You have everything for this"
+        android:textColor="@color/primary_aqua"
+        android:textSize="13sp"
+        android:layout_marginTop="6dp" />
 
 </LinearLayout>
