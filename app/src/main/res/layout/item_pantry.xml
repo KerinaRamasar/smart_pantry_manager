@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This defines what ONE row in the pantry list looks like -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp">
+    android:background="@drawable/bg_card"
+    android:layout_marginBottom="10dp"
+    android:padding="14dp"
+    android:gravity="center_vertical">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -17,7 +19,8 @@
             android:id="@+id/textItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textColor="@color/text_main"
+            android:textSize="17sp"
             android:textStyle="bold"
             tools:text="Tomato" />
 
@@ -25,21 +28,34 @@
             android:id="@+id/textItemQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            tools:text="3 unit - Expires: 2026-09-20" />
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            tools:text="3 pcs · Expires: 2026-10-10" />
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit" />
+        android:text="Edit"
+        android:textColor="@color/primary_aqua"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
 
-    <Button
+    <TextView
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:text="Delete"
+        android:textColor="@color/error_delete"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:layout_marginStart="4dp"
+        android:clickable="true"
+        android:focusable="true" />
 
 </LinearLayout>

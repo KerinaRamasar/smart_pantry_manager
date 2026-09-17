@@ -14,6 +14,7 @@ import com.example.smartpantrymanager.model.PantryItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import android.content.Intent;
 
 /**
  * Pantry List screen - shows every ingredient currently in the user's pantry.
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         // Add button - will open the Add/Edit screen once we build it next.
         // For now it just confirms the click works.
         fabAdd.setOnClickListener(v ->
-                Toast.makeText(this, "Add screen coming in the next step", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(this, AddEditIngredientActivity.class)));
     }
 
     @Override
@@ -75,8 +76,13 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
 
     @Override
     public void onEdit(PantryItem item) {
-        // Will launch AddEditIngredientActivity with this item's data - next session.
-        Toast.makeText(this, "Edit screen coming in the next step", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, AddEditIngredientActivity.class);
+        intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_ID, item.getId());
+        intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_NAME, item.getName());
+        intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_QUANTITY, item.getQuantity());
+        intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_UNIT, item.getUnit());
+        intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_EXPIRY, item.getExpiryDate());
+        startActivity(intent);
     }
 
     @Override
