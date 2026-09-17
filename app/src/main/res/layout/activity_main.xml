@@ -48,7 +48,7 @@
         android:text="+"
         app:backgroundTint="@color/primary_aqua"
         app:tint="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavPantry"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
