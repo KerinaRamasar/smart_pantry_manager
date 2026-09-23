@@ -109,14 +109,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "1. Mash banana, mix with flour, egg and milk.\n2. Pour batter onto hot pan.\n3. Flip once bubbles form, cook other side.",
                 new Object[][]{{"banana", 1, "unit"}, {"flour", 100, "g"}, {"egg", 1, "unit"}, {"milk", 100, "ml"}});
 
-        addSeedRecipe(db, "Vegetable Soup",
-                "1. Chop all vegetables.\n2. Simmer in stock for 20 minutes.\n3. Season to taste and serve.",
-                new Object[][]{{"carrot", 2, "unit"}, {"potato", 2, "unit"}, {"onion", 1, "unit"}, {"vegetable stock", 500, "ml"}});
-
-        addSeedRecipe(db, "Beef Tacos",
-                "1. Brown beef mince in a pan with spices.\n2. Warm tortillas.\n3. Fill tortillas with beef, lettuce and cheese.",
-                new Object[][]{{"beef mince", 250, "g"}, {"tortilla", 4, "unit"}, {"lettuce", 50, "g"}, {"cheese", 50, "g"}});
-
         addSeedRecipe(db, "Greek Salad",
                 "1. Chop cucumber, tomato and onion.\n2. Combine with olives and feta.\n3. Dress with olive oil.",
                 new Object[][]{{"cucumber", 1, "unit"}, {"tomato", 2, "unit"}, {"onion", 1, "unit"}, {"feta cheese", 100, "g"}, {"olive oil", 15, "ml"}});
@@ -141,10 +133,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "1. Boil potatoes until soft.\n2. Mash with butter and milk.\n3. Season with salt and pepper.",
                 new Object[][]{{"potato", 4, "unit"}, {"butter", 20, "g"}, {"milk", 50, "ml"}});
 
-        addSeedRecipe(db, "Cheese Quesadilla",
-                "1. Place cheese on tortilla, fold in half.\n2. Cook in pan until golden and cheese melts.\n3. Slice and serve.",
-                new Object[][]{{"tortilla", 2, "unit"}, {"cheese", 100, "g"}});
-
         addSeedRecipe(db, "Rice and Beans",
                 "1. Cook rice.\n2. Heat beans with onion and spices.\n3. Serve beans over rice.",
                 new Object[][]{{"rice", 200, "g"}, {"black beans", 200, "g"}, {"onion", 1, "unit"}});
@@ -152,6 +140,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         addSeedRecipe(db, "Egg Fried Noodles",
                 "1. Boil noodles.\n2. Scramble egg in pan, add noodles.\n3. Add soy sauce and stir-fry together.",
                 new Object[][]{{"noodles", 200, "g"}, {"egg", 2, "unit"}, {"soy sauce", 15, "ml"}});
+
+        addSeedRecipe(db, "Toasted Chicken and Mayo Sandwich",
+                "1. Butter bread and layer chicken, cheese, lettuce and mayo.\n2. Close sandwich and toast in a pan until golden and cheese melts.\n3. Season with salt to taste, slice and serve.",
+                new Object[][]{{"leftover fried chicken", 150, "g"}, {"mayonnaise", 20, "g"}, {"bread", 2, "slice"}, {"lettuce", 20, "g"}, {"cheese", 30, "g"}});
+
+        addSeedRecipe(db, "Chicken Fried Rice",
+                "1. Cook rice (or use leftover rice) and set aside.\n2. Stir-fry diced chicken with onion until cooked through.\n3. Add rice, soy sauce, garlic sauce, black pepper and paprika, stir-fry until combined.\n4. Season with salt to taste and serve hot.",
+                new Object[][]{{"chicken", 150, "g"}, {"rice", 200, "g"}, {"onion", 1, "unit"}, {"soy sauce", 15, "ml"}, {"garlic sauce", 10, "ml"}, {"black pepper", 1, "g"}, {"paprika", 1, "g"}});
+
+        addSeedRecipe(db, "Egg Fried Rice",
+                "1. Cook rice (or use leftover rice) and set aside.\n2. Scramble egg in a pan, then stir in onion.\n3. Add rice, soy sauce, garlic sauce, black pepper and paprika, stir-fry until combined.\n4. Season with salt to taste and serve hot.",
+                new Object[][]{{"egg", 2, "unit"}, {"rice", 200, "g"}, {"onion", 1, "unit"}, {"soy sauce", 15, "ml"}, {"garlic sauce", 10, "ml"}, {"black pepper", 1, "g"}, {"paprika", 1, "g"}});
+
+        addSeedRecipe(db, "Leftover Braai into Spicy Chutney",
+                "1. Chop onion, tomato and chillies finely.\n2. Fry onion until soft, add tomato and chillies, simmer until pulpy.\n3. Stir in chopped leftover braai meat and heat through.\n4. Season with salt to taste and serve as a chutney or relish.",
+                new Object[][]{{"onion", 1, "unit"}, {"tomato", 2, "unit"}, {"green chillies", 2, "unit"}, {"leftover braai", 150, "g"}});
+
+        addSeedRecipe(db, "Bean and Rice Patties",
+                "1. Mash cooked rice and beans together in a bowl.\n2. Add chopped onion, curry powder and breadcrumbs, mix well.\n3. Shape into patties.\n4. Season with salt to taste and pan-fry until golden on both sides.",
+                new Object[][]{{"rice", 200, "g"}, {"beans", 200, "g"}, {"breadcrumbs", 50, "g"}, {"onion", 1, "unit"}, {"curry powder", 5, "g"}});
+
+        addSeedRecipe(db, "Banana Cake",
+                "1. Mash bananas in a bowl.\n2. Mix in oil, baking powder and flour until combined into a batter.\n3. Pour into a greased tin and bake until a skewer comes out clean.",
+                new Object[][]{{"banana", 2, "unit"}, {"oil", 60, "ml"}, {"baking powder", 5, "g"}, {"flour", 200, "g"}});
+
+        addSeedRecipe(db, "Pizza",
+                "1. Mix flour, yeast, water and a pinch of salt to make dough; let it rise.\n2. Roll out dough, top with tomato, onion, mushroom and fried chicken.\n3. Bake until crust is golden and toppings are cooked.\n4. Season with salt to taste before serving.",
+                new Object[][]{{"mushroom", 100, "g"}, {"fried chicken", 150, "g"}, {"tomato", 2, "unit"}, {"onion", 1, "unit"}, {"flour", 250, "g"}, {"yeast", 7, "g"}, {"water", 150, "ml"}});
+
+        addSeedRecipe(db, "Mutton and Rice",
+                "1. Fry onion and garlic in oil until fragrant.\n2. Add masala and leftover mutton, stir to coat.\n3. Add rice and water, cover and simmer until rice is cooked.\n4. Season with salt to taste and serve.",
+                new Object[][]{{"onion", 1, "unit"}, {"garlic", 2, "clove"}, {"oil", 30, "ml"}, {"masala", 10, "g"}, {"water", 300, "ml"}, {"rice", 200, "g"}, {"leftover mutton", 200, "g"}});
+
+        addSeedRecipe(db, "Shredded Tuna with Mayo Sandwich",
+                "1. Mix shredded tuna with mayo, finely chopped onion and chillies.\n2. Season with salt to taste.\n3. Spread onto toasted bread and serve.",
+                new Object[][]{{"onion", 1, "unit"}, {"chillies", 1, "unit"}, {"mayonnaise", 20, "g"}, {"tuna", 100, "g"}, {"toasted bread", 2, "slice"}});
+
+        addSeedRecipe(db, "Baked Beans Salad",
+                "1. Combine baked beans, chopped onion, chillies and tomato in a bowl.\n2. Season with salt to taste and mix well before serving.",
+                new Object[][]{{"baked beans", 200, "g"}, {"onion", 1, "unit"}, {"chillies", 1, "unit"}, {"tomato", 2, "unit"}});
+
+        addSeedRecipe(db, "Nandos Style Chicken and Rice",
+                "1. Cook rice and set aside.\n2. Toss roasted chicken in Nandos sauce and garlic sauce.\n3. Serve chicken over rice.\n4. Season with salt to taste.",
+                new Object[][]{{"rice", 200, "g"}, {"roasted chicken", 200, "g"}, {"nandos sauce", 30, "ml"}, {"garlic sauce", 15, "ml"}});
+
+        addSeedRecipe(db, "Toasted Mutton Sandwich",
+                "1. Butter the bread slices.\n2. Fill with mutton curry and cheese.\n3. Toast in a pan until golden and cheese melts.\n4. Season with salt to taste and serve.",
+                new Object[][]{{"mutton curry", 150, "g"}, {"bread", 2, "slice"}, {"cheese", 30, "g"}, {"butter", 10, "g"}});
+
+        addSeedRecipe(db, "Toasted Nutella Bread",
+                "1. Spread Nutella onto one slice of bread.\n2. Top with the other slice and toast in a pan until golden.\n3. Slice and serve warm.",
+                new Object[][]{{"bread", 2, "slice"}, {"nutella", 30, "g"}});
+
+        addSeedRecipe(db, "Basic Naan",
+                "1. Mix flour, yogurt, baking powder and a pinch of salt into a soft dough.\n2. Knead for a few minutes, then rest covered for 30 minutes.\n3. Divide into balls, roll flat, and cook in a hot dry pan until bubbled and lightly charred on both sides.\n4. Brush with a little butter before serving.",
+                new Object[][]{{"flour", 250, "g"}, {"yogurt", 100, "g"}, {"baking powder", 5, "g"}});
+
     }
 
     // Helper used only by seedRecipes() - inserts one recipe plus its ingredient rows

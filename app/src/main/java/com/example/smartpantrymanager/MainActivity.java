@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         bottomNav.setSelectedItemId(R.id.nav_pantry);
         NavigationHelper.setup(this, bottomNav);
 
-        fabAdd.setOnClickListener(v ->
-                startActivity(new Intent(this, AddEditIngredientActivity.class)));
+        fabAdd.setOnClickListener(v -> {
+            startActivity(new Intent(this, AddEditIngredientActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        });
     }
 
     @Override
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_UNIT, item.getUnit());
         intent.putExtra(AddEditIngredientActivity.EXTRA_ITEM_EXPIRY, item.getExpiryDate());
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override

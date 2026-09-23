@@ -27,6 +27,7 @@ public class NavigationHelper {
                 // Clears any duplicate stacked screens - tapping tabs never piles up a big back stack
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
             return true;
         });

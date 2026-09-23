@@ -17,7 +17,8 @@ public class SplashActivity extends AppCompatActivity {
         Button getStarted = findViewById(R.id.buttonGetStarted);
         getStarted.setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
-            finish(); // don't keep Splash on the back stack
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
         });
     }
 }
