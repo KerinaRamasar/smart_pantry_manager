@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:contentDescription="Add ingredient"
-        android:text="+"
+        app:srcCompat="@android:drawable/ic_input_add"
         app:backgroundTint="@color/primary_aqua"
         app:tint="@color/background"
         app:layout_constraintBottom_toTopOf="@id/bottomNavPantry"

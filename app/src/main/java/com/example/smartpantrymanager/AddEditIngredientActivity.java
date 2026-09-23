@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smartpantrymanager.database.DatabaseHelper;
 import com.example.smartpantrymanager.model.PantryItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
@@ -27,8 +30,8 @@ public class AddEditIngredientActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM_UNIT = "extra_item_unit";
     public static final String EXTRA_ITEM_EXPIRY = "extra_item_expiry";
 
-    // Simple yyyy-MM-dd check - good enough to catch obviously malformed dates
-    private static final Pattern DATE_PATTERN = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
+    // First check: does it even LOOK like yyyy-MM-dd (right number of digits/dashes)?
+    private static final Pattern DATE_SHAPE_PATTERN = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
 
     private DatabaseHelper dbHelper;
     private long editingItemId = -1; // -1 means "adding new", anything else means "editing"
@@ -64,6 +67,26 @@ public class AddEditIngredientActivity extends AppCompatActivity {
         }
 
         saveButton.setOnClickListener(v -> attemptSave());
+    }
+
+    /**
+     * Checks that a string is not just yyyy-MM-dd SHAPED, but an actual valid calendar date
+     * (rejects things like month 19 or day 90). setLenient(false) is what makes
+     * SimpleDateFormat actually enforce real calendar rules instead of "rolling over"
+     * invalid values (e.g. silently turning day 32 into the 1st of the next month).
+     */
+    private boolean isValidDate(String dateString) {
+        if (!DATE_SHAPE_PATTERN.matcher(dateString).matches()) {
+            return false;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        sdf.setLenient(false);
+        try {
+            sdf.parse(dateString);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     /**
@@ -111,9 +134,9 @@ public class AddEditIngredientActivity extends AppCompatActivity {
             }
         }
 
-        // Expiry date is OPTIONAL, but if provided, must match yyyy-MM-dd
-        if (!TextUtils.isEmpty(expiry) && !DATE_PATTERN.matcher(expiry).matches()) {
-            errorExpiry.setText("Date must be in yyyy-MM-dd format");
+        // Expiry date is OPTIONAL, but if provided, must be a real yyyy-MM-dd date
+        if (!TextUtils.isEmpty(expiry) && !isValidDate(expiry)) {
+            errorExpiry.setText("Enter a valid date in yyyy-MM-dd format");
             errorExpiry.setVisibility(android.view.View.VISIBLE);
             isValid = false;
         }
