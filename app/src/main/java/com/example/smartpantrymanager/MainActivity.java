@@ -1,6 +1,7 @@
 package com.example.smartpantrymanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,12 +55,16 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
     protected void onResume() {
         super.onResume();
         // Reload every time the screen becomes visible again,
-        // so changes made on other screens (add/edit/delete) always show up.
+        // so changes made on other screens (add/edit/delete/settings) always show up.
         loadPantryItems();
     }
 
     private void loadPantryItems() {
-        List<PantryItem> items = dbHelper.getAllPantryItems();
+        // Read the user's chosen sort order from Settings (defaults to "name"
+        // if they've never changed it) so this list always reflects their preference.
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME, MODE_PRIVATE);
+        String sortBy = prefs.getString(SettingsActivity.KEY_SORT_BY, "name");
+        List<PantryItem> items = dbHelper.getAllPantryItems(sortBy);
 
         if (items.isEmpty()) {
             emptyText.setVisibility(android.view.View.VISIBLE);

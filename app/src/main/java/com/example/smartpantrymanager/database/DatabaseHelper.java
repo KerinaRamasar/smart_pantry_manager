@@ -220,10 +220,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Deletes every row from the pantry table (used by the "Clear All Pantry
+     * Data" action in Settings). Recipes are untouched - this only wipes
+     * what the user has added to their own pantry.
+     */
+    public void clearAllPantryItems() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_PANTRY, null, null);
+        db.close();
+    }
+
     public List<PantryItem> getAllPantryItems() {
+        return getAllPantryItems("name");
+    }
+
+    /**
+     * Overload that supports the Settings "Sort Pantry By" preference.
+     * sortBy is either "name" (alphabetical) or "expiry" (soonest first).
+     */
+    public List<PantryItem> getAllPantryItems(String sortBy) {
         List<PantryItem> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_PANTRY, null, null, null, null, null, COL_PANTRY_NAME + " ASC");
+        String orderBy = "expiry".equals(sortBy)
+                ? COL_PANTRY_EXPIRY + " ASC"
+                : COL_PANTRY_NAME + " ASC";
+        Cursor cursor = db.query(TABLE_PANTRY, null, null, null, null, null, orderBy);
 
         if (cursor.moveToFirst()) {
             do {
