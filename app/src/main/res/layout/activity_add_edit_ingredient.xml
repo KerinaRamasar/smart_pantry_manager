@@ -55,35 +55,59 @@
         android:layout_marginTop="4dp"
         android:visibility="gone" />
 
-    <EditText
-        android:id="@+id/editUnit"
+    <!-- Unit dropdown: preset options, or "Other" to type a custom unit -->
+    <Spinner
+        android:id="@+id/spinnerUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="g, ml, unit, slice"
+        android:background="@drawable/bg_input_field"
+        android:padding="12dp"
+        android:layout_marginTop="14dp" />
+
+    <EditText
+        android:id="@+id/editCustomUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter custom unit (e.g. mg, kg)"
         android:inputType="text"
         android:background="@drawable/bg_input_field"
         android:textColor="@color/text_main"
         android:textColorHint="@color/text_secondary"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="10dp"
+        android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/errorUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error_delete"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp"
+        android:visibility="gone" />
+
+    <!-- Expiry date: not typed - tapping opens the calendar picker -->
     <EditText
         android:id="@+id/editExpiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Expiry date - optional (yyyy-MM-dd)"
-        android:inputType="text"
+        android:hint="Expiry date - optional (tap to choose)"
+        android:inputType="none"
+        android:focusable="false"
+        android:clickable="true"
+        android:cursorVisible="false"
         android:background="@drawable/bg_input_field"
         android:textColor="@color/text_main"
         android:textColorHint="@color/text_secondary"
         android:layout_marginTop="14dp" />
 
     <TextView
-        android:id="@+id/errorExpiry"
+        android:id="@+id/textClearExpiry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/error_delete"
+        android:text="Clear date"
+        android:textColor="@color/primary_aqua"
         android:textSize="12sp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:visibility="gone" />
 
     <Button

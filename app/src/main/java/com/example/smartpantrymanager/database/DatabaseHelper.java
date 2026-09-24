@@ -243,7 +243,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         List<PantryItem> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         String orderBy = "expiry".equals(sortBy)
-                ? COL_PANTRY_EXPIRY + " ASC"
+                ? "CASE WHEN " + COL_PANTRY_EXPIRY + " IS NULL OR " + COL_PANTRY_EXPIRY + " = '' THEN 1 ELSE 0 END, " + COL_PANTRY_EXPIRY + " ASC"
                 : COL_PANTRY_NAME + " ASC";
         Cursor cursor = db.query(TABLE_PANTRY, null, null, null, null, null, orderBy);
 
