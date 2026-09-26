@@ -14,7 +14,7 @@ An Android app I built in Java for my **Mobile App Development 700** practical a
 - Fully **offline** — no internet connection or login needed
 
 ## Screenshots
-C:\Users\Asheel\Desktop\MobileAppDev\screenshots
+MobileAppDev\screenshots
 
 ## Tech stack
 
